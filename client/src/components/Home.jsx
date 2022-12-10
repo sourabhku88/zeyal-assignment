@@ -1,10 +1,11 @@
 import React from 'react'
 import { useCookies } from "react-cookie";
+import { useNavigate } from 'react-router-dom';
 import Login from './Login';
 
 const Home = () => {
-    const [cookies, setCookie] = useCookies([]);
-
+    const [cookies, setCookie,removeCookie] = useCookies([]);
+    const navigate = useNavigate();
     return (
         <>
             {cookies.token === undefined ? <Login /> :
@@ -20,7 +21,7 @@ const Home = () => {
                         <p>Show search text message hear text</p>
                         <textarea type="password" name='password' value={cookies && cookies.user.name} className="form-control mb-3"  > </textarea>
                         <button type="submit" className="btn btn-primary bt-3" >clear all</button>
-                        <button type="submit" className="btn btn-outline-primary m-3" onClick={setCookie('token','')}>Logout</button>
+                        <button type="submit" className="btn btn-outline-primary m-3" onClick={() => { removeCookie('token'); navigate('/login') }}>Logout</button>
                     </div>
 
                 </div>
