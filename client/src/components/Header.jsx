@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useCookies } from "react-cookie";
 
 const Header = () => {
+  const [cookies, setCookie] = useCookies([]);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -19,7 +22,7 @@ const Header = () => {
                     <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
               </li>
               <li className="nav-item">
-                    <div className="btn btn-outline-success sm-btn"> Logout </div>
+                    <div className="btn btn-outline-success sm-btn" onClick={setCookie('token','')}> Logout </div>
               </li>
             </ul>
           </div>

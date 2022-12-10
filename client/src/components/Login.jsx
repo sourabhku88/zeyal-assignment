@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const Login = () => {
     const [inputData, setInputData] = useState({ email: '', password: '' });
-    const [cookies, setCookie] = useCookies(["user"]);
+    const [cookies, setCookie] = useCookies([]);
     const  navigate = useNavigate()
     
     const inputHendler = e => setInputData({ ...inputData, [e.target.name]: e.target.value });
